@@ -57,6 +57,7 @@ const writeHtml = (html: string) => {
   node.innerHTML = htmlDocument.documentElement.innerHTML;
   root.appendChild(node);
 };
+
 class QwikWebC extends HTMLElement {
   async connectedCallback() {
     let removeLoader = false;
