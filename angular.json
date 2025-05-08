@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "fuck": {
+    "nope": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -17,7 +17,7 @@
               "@qwik-city-sw-register",
               "@qwik-city-plan"
             ],
-            "outputPath": "dist/fuck",
+            "outputPath": "dist/nope",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -66,10 +66,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "fuck:build:production"
+              "buildTarget": "nope:build:production"
             },
             "development": {
-              "buildTarget": "fuck:build:development"
+              "buildTarget": "nope:build:development"
             }
           },
           "defaultConfiguration": "development"
