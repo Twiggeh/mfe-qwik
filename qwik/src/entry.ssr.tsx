@@ -17,13 +17,10 @@ import {
 import { manifest } from "@qwik-client-manifest";
 import Root from "./root";
 
-const base = "/home/build/";
-
 export default function (opts: RenderToStreamOptions) {
   const url = new URL(opts.serverData!.url);
   return renderToStream(<Root />, {
     manifest,
-    base,
     ...opts,
     // Use container attributes to set attributes on the html tag.
     containerAttributes: {
