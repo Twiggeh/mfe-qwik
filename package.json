@@ -6,7 +6,21 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "vite": "vite",
+    "qwik:build": "cd qwik && qwik build",
+    "qwik:build.client": "cd qwik && vite build",
+    "qwik:build.preview": "cd qwik && vite build --ssr src/entry.preview.tsx",
+    "qwik:build.types": "cd qwik && tsc --incremental --noEmit",
+    "qwik:deploy": "cd qwik && echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "qwik:dev": "cd qwik && vite --mode ssr",
+    "qwik:dev.debug": "cd qwik && node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
+    "qwik:fmt": "cd qwik && prettier --write .",
+    "qwik:fmt.check": "cd qwik && prettier --check .",
+    "qwik:lint": "cd qwik && eslint \"src/**/*.ts*\"",
+    "qwik:preview": "cd qwik && qwik build preview && vite preview --open",
+    "qwik:start": "cd qwik && vite --open --mode ssr",
+    "qwik:qwik": "cd qwik && qwik"
   },
   "private": true,
   "dependencies": {
@@ -17,8 +31,12 @@
     "@angular/platform-browser": "^19.2.0",
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
+    "@builder.io/qwik": "^1.13.0",
+    "@builder.io/qwik-city": "^1.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "vite": "^5.4.19",
+    "vite-plugin-angular": "^0.0.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
@@ -32,6 +50,18 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.7.2"
+    "typescript": "~5.7.2",
+    "@builder.io/qwik": "^1.13.0",
+    "@builder.io/qwik-city": "^1.13.0",
+    "@types/eslint": "8.56.10",
+    "@types/node": "20.14.11",
+    "@typescript-eslint/eslint-plugin": "7.16.1",
+    "@typescript-eslint/parser": "7.16.1",
+    "eslint": "8.57.0",
+    "eslint-plugin-qwik": "^1.13.0",
+    "prettier": "3.3.3",
+    "undici": "*",
+    "vite": "5.3.5",
+    "vite-tsconfig-paths": "^4.2.1"
   }
 }

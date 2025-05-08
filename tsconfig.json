@@ -16,7 +16,9 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022"
+    "module": "ES2022",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
