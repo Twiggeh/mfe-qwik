@@ -40,22 +40,35 @@ const fixImageWarningClash = (html: string, base: string) =>
   html.replace(/image-warning/gm, `image-warning-${base.replace('/', '')}`);
 
 const writeHtml = (html: string) => {
-  const node = document.createElement('div');
   const root = document.getElementsByTagName('qwik-webc')[0];
   const parser = new DOMParser();
   const htmlDocument = parser.parseFromString(html, 'text/html');
-  const scripts = htmlDocument.querySelectorAll('script');
-  scripts.forEach((s) => {
+  let scripts = [
+    ...htmlDocument.querySelectorAll('script'),
+    {
+      attributes: [{ name: 'id', value: 'hello' }],
+      parentNode: null,
+      innerHTML: "alert('hello')",
+    },
+  ];
+
+  scripts = scripts.map((s, i) => {
     const newScript = document.createElement('script');
     for (const { name, value } of s.attributes) {
       newScript.setAttribute(name, value);
     }
     newScript.innerHTML = s.innerHTML;
-    root.appendChild(newScript);
     s.parentNode?.removeChild(s);
+    return newScript;
   });
-  node.innerHTML = htmlDocument.documentElement.innerHTML;
-  root.appendChild(node);
+
+  root.innerHTML = htmlDocument.documentElement.innerHTML;
+  const qwikContainer = document.querySelector(
+    `div[${CSS.escape('q:container')}]`,
+  );
+  if (!qwikContainer) throw new Error('Failed to mount qwik container!');
+  // @ts-ignore
+  scripts.forEach((s) => qwikContainer.appendChild(s));
 };
 
 class QwikWebC extends HTMLElement {

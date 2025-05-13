@@ -34,6 +34,7 @@ export default function (opts: RenderToStreamOptions) {
         prefetchEvent: "always",
       },
     },
+    base: "/home/build",
     containerTagName: "div",
     qwikLoader: {
       include: url.searchParams.get("loader") ? "never" : "auto",
